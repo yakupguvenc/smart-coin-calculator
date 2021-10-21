@@ -1,0 +1,85 @@
+
+.container {
+    height: auto;
+    width: auto;
+    background-color: #ffffff;
+    margin-top: 10vh;
+    padding: 20px;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: #000000;
+    opacity: 1;
+    text-align: center;
+    align-content: center;
+}
+
+.dropdown-menu.show {
+    max-height: 250px;
+    overflow: auto;
+}
+
+.left-area{
+    z-index: 2;
+    height: 300px;
+}
+
+.right-area{
+    z-index: 1;
+    height: 300px;
+}
+
+/*.currency {*/
+/*    padding-top: 5%;*/
+/*    padding-bottom: 5%;*/
+/*}*/
+
+.currency button {
+    background-color: white;
+    color: #3b6efd;
+    border-right: 1px solid #ced4da;
+    border-top: 1px solid #ced4da;
+    border-bottom: 1px solid #ced4da;
+    border-left: 0;
+
+}
+
+.currency button.show {
+    background: unset!important;
+    color: #3b6efd!important;
+
+}
+
+.currency input {
+    color: #192c1e;
+    width: 400px;
+    height: 40px;
+    border-left: 1px solid #ced4da;
+    border-top: 1px solid #ced4da;
+    border-bottom: 1px solid #ced4da;
+    border-right: 0;
+    font-weight: 500;
+}
+
+.currency select option {
+    font-size: 1rem;
+    color: rgb(88, 88, 253);
+}
+
+
+/*select:focus, input:focus, button:focus {*/
+/*    outline: 0;*/
+/*}*/
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.btn-symbols{
+    height: 100px;
+    width: 100px;
+    font-size:52px;
+    color:#ffa300
+}
