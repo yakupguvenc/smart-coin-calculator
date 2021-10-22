@@ -10,13 +10,17 @@
           </div>
           <div class="d-flex justify-content-between mt-4">
             <div class="input-group me-3 mb-3 currency">
-              <currency-input class="form-control" name="price"
-                              :distraction-free="false"
-                              :currency="{currency:'', suffix:'' }"
-                              @keyup.native="currencyInputdelay"
-                              @keydown.native="process=false"
-                              v-model="requestPrice.currencyAmount"
-              />
+
+                <currency-input class="form-control" name="price"
+                                :distraction-free="false"
+                                :currency="{currency:'', suffix:'' }"
+                                @keyup.native="currencyInputdelay"
+                                @keydown.native="process=false"
+                                v-model="requestPrice.currencyAmount"
+                />
+                <div class="icon-container" v-show="!process">
+                  <i class="loader"></i>
+                </div>
               <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                       aria-expanded="false">{{ selected_currency.symbol }}
               </button>
@@ -37,12 +41,15 @@
             <div class="input-group ms-3 mb-3 currency">
               <currency-input class="form-control" name="price"
                               :distraction-free="false"
-                              :currency="{currency:'', suffix:'' }"
+                              :currency="{currency:'', suffix:loading }"
                               :precision="{min: 0, max: 12}"
                               @keyup.native="cryptoInputdelay"
                               @keydown.native="process=false"
                               v-model="requestPrice.cryptoAmount"
               />
+              <div class="icon-container" v-show="!process">
+                <i class="loader"></i>
+              </div>
               <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                       aria-expanded="false">{{ selectCrypto.crypto }}
               </button>
@@ -124,9 +131,6 @@ export default {
   },
   created() {
     this.init()
-  },
-  mounted(){
-
   },
   methods: {
     async getCurrencyToCrypto(currencyAmount, currencySymbol) {
@@ -244,4 +248,50 @@ export default {
 </script>
 <style>
 
+
+.icon-container {
+  position: absolute;
+  right: 6px;
+  top: calc(50% - 10px);
+  z-index: 5;
+}
+
+.loader {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+  animation: around 5.4s infinite;
+}
+
+@keyframes around {
+  0% {
+    transform: rotate(0deg)
+  }
+  100% {
+    transform: rotate(360deg)
+  }
+}
+
+.loader::after, .loader::before {
+  content: "";
+  background: white;
+  position: absolute;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  border-width: 2px;
+  border-color: #333 #333 transparent transparent;
+  border-style: solid;
+  border-radius: 20px;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  animation: around 0.7s ease-in-out infinite;
+}
+
+.loader::after {
+  animation: around 0.7s ease-in-out 0.1s infinite;
+  background: transparent;
+}
 </style>
