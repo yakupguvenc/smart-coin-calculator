@@ -139,7 +139,7 @@ export default {
     },
     selectCurrency(currency) {
       this.alert = {status: false, message: ''}
-      this.requestPrice.currencyAmount = 0
+      this.requestPrice.currencyAmount = null
       this.cryptoInputdelay();
       this.selected_currency = currency;
     },
