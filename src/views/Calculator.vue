@@ -22,7 +22,7 @@
               </button>
               <ul class="dropdown-menu dropdown-menu-end">
                 <template v-for="(currency,index) in currencies">
-                  <li v-if="currency.symbol !== selected_currency.symbol"
+                  <li v-if="currency.symbol !== selected_currency.symbol" @click="selectCurrency(currency)"
                       :key="index">
                     <router-link :to="'/calculator/'+currency.symbol"
                                  class="dropdown-item">{{
@@ -125,6 +125,9 @@ export default {
   created() {
     this.init()
   },
+  mounted(){
+
+  },
   methods: {
     async getCurrencyToCrypto(currencyAmount, currencySymbol) {
       let url = "https://blockchain.info/tobtc?currency=" + currencySymbol + "&value=" + currencyAmount;
@@ -136,7 +139,7 @@ export default {
     },
     selectCurrency(currency) {
       this.alert = {status: false, message: ''}
-      this.requestPrice.currencyAmount = ''
+      this.requestPrice.currencyAmount = 0
       this.cryptoInputdelay();
       this.selected_currency = currency;
     },
